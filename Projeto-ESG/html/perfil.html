@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/perfil.css">
+    <title>Perfil e acesso</title>
+</head>
+<body>
+    <aside class="menu-lateral">
+      <h2>Bio Óleo</h2>
+
+      <nav>
+        <a href="/dashboard-cliente.html" class="ativo">Início</a>
+        <a href="#">Solicitar coleta</a>
+        <a href="#">Acompanhar coleta</a>
+        <a href="/relatórios.html">Relatórios</a>
+        <a href="/acesso.html">Restrição de acesso</a>
+        <a href="/perfil.html">Perfil</a>
+      </nav>
+    </aside>
+    <main>
+         <section class="bloco">
+        <div class="cartao">
+          <h1>Meu perfil</h1>
+          <label for="text">Nome</label>
+  <?php
+                while ($user_data = mysqli_fetch_assoc($result)) {
+                    echo "<tr>";
+                    echo "<td>" . $user_data['nome'] . "</td>";
+                    echo "<td>" . $user_data['telefone'] . "</td>";
+                    echo "<td>" . $user_data['data_registro'] . "</td>";
+                    echo "<td>
+
+                        >
+                                </div>
+
+    </main>
+    <section class="bloco">
+        <div class="cartao">
+        <h1>Dados do perfil</h1>
+        </div>
+    </section>
+    
+</body>
+</html>
