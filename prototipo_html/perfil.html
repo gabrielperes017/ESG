@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Perfil - Bio Óleo</title>
+    <link rel="stylesheet" href="estilo.css" />
+  </head>
+  <body>
+    <aside class="menu-lateral">
+      <h2>Bio Óleo</h2>
+
+      <nav>
+        <a href="dashboard-cliente.html">Início</a>
+        <a href="#">Solicitar coleta</a>
+        <a href="#">Acompanhar coleta</a>
+        <a href="relatorios.html">Relatórios</a>
+        <a href="acesso.html">Restrição de acesso</a>
+        <a href="perfil.html" class="ativo">Perfil</a>
+      </nav>
+    </aside>
+
+    <main class="conteudo">
+      <h1>Meu perfil</h1>
+      <p>Mantenha seus dados sempre atualizados.</p>
+
+      <section class="cartao">
+        <div class="perfil-topo">
+          <div class="avatar">C</div>
+          <div>
+            <h2>Cliente</h2>
+            <p>cliente@email.com</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="cartao">
+        <h2>Dados do perfil</h2>
+
+        <form>
+          <label for="nome">Nome</label>
+          <input type="text" id="nome" name="nome" placeholder="Seu nome completo" />
+
+          <div class="linha">
+            <div>
+              <label for="email">E-mail</label>
+              <input type="email" id="email" name="email" placeholder="seu@email.com" />
+            </div>
+            <div>
+              <label for="telefone">Telefone</label>
+              <input type="tel" id="telefone" name="telefone" placeholder="(00) 00000-0000" />
+            </div>
+          </div>
+
+          <label for="endereco">Endereço de coleta</label>
+          <input type="text" id="endereco" name="endereco" placeholder="Rua, número, bairro, cidade" />
+
+          <button type="submit">Salvar alterações</button>
+        </form>
+      </section>
+
+      <section class="cartao">
+        <h2>Alterar senha</h2>
+
+        <form>
+          <div class="linha">
+            <div>
+              <label for="senha">Nova senha</label>
+              <input type="password" id="senha" name="senha" />
+            </div>
+            <div>
+              <label for="confirmar">Confirmar senha</label>
+              <input type="password" id="confirmar" name="confirmar" />
+            </div>
+          </div>
+
+          <button type="submit">Atualizar senha</button>
+        </form>
+      </section>
+    </main>
+  </body>
+</html>

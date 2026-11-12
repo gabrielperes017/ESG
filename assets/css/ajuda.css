@@ -1,0 +1,92 @@
+.pagina-ajuda {
+    max-width: 780px;
+    margin: 0 auto;
+    padding: 24px 16px 48px;
+    display: grid;
+    gap: 20px;
+}
+.voltar {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    justify-self: start;
+    min-height: 56px;
+    padding: 14px 26px;
+    border: 2px solid var(--folha);
+    border-radius: 12px;
+    background: #fff;
+    color: var(--folha);
+    font-size: 20px;
+    font-weight: 700;
+    text-decoration: none;
+    transition: background .15s, color .15s;
+}
+.voltar:hover,
+.voltar:focus-visible { background: var(--folha); color: #fff; }
+.voltar:focus-visible { outline: 3px solid var(--folha); outline-offset: 2px; }
+.topo-ajuda h1 { margin: 8px 0 6px; font-size: 34px; color: var(--floresta); }
+.topo-ajuda p { margin: 0; color: var(--suave); font-size: 18px; }
+
+.cartao-ajuda {
+    background: #fff;
+    border: 1.5px solid var(--borda);
+    border-radius: 14px;
+    padding: 20px;
+}
+.cartao-ajuda h2 { margin: 0 0 14px; font-size: 22px; color: var(--floresta); }
+
+.contato-rapido { background: var(--nevoa); border-color: #B7D8C4; }
+.botoes-contato { display: flex; flex-wrap: wrap; gap: 12px; }
+.botao-contato {
+    display: inline-block;
+    padding: 14px 22px;
+    border-radius: 10px;
+    background: var(--folha);
+    color: #fff;
+    font-weight: 700;
+    text-decoration: none;
+}
+.botao-contato:hover { background: var(--folha-escura); }
+.botao-whatsapp { background: #1B7F4B; }
+
+.cartao-ajuda details { border-top: 1px solid var(--borda); padding: 4px 0; }
+.cartao-ajuda details:first-of-type { border-top: 0; }
+.cartao-ajuda summary {
+    cursor: pointer;
+    padding: 12px 4px;
+    font-weight: 700;
+    font-size: 18px;
+    color: var(--tinta);
+}
+.cartao-ajuda details[open] summary { color: var(--folha); }
+.cartao-ajuda details ol, .cartao-ajuda details ul { margin: 0 0 8px; padding-left: 26px; }
+.cartao-ajuda details li { margin: 6px 0; }
+.cartao-ajuda details p { margin: 0 0 8px; padding: 0 4px; }
+.cartao-ajuda .dica { color: var(--suave); font-size: 16px; }
+
+.pagina-ajuda .formulario { display: grid; gap: 16px; }
+.input-ajuda {
+    display: block;
+    width: 100%;
+    padding: 12px 14px;
+    border: 1.5px solid var(--borda);
+    border-radius: 10px;
+    background: #fff;
+    font-size: 17px;
+}
+textarea.input-ajuda { resize: vertical; min-height: 96px; }
+.input-ajuda:focus { outline: 3px solid var(--folha); outline-offset: 1px; border-color: var(--folha); }
+.rotulo-campo small { font-weight: 400; color: var(--suave); }
+
+.armadilha { position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden; }
+
+@media (max-width: 520px) {
+    .topo-ajuda h1 { font-size: 28px; }
+    .botao-contato { width: 100%; text-align: center; }
+    .voltar { width: 100%; justify-content: center; }
+}
+
+.pagina-estreita { max-width: 560px; }
+.pagina-estreita .topo-ajuda h1 { font-size: 30px; }
+.link-teste { color: var(--folha); font-weight: 700; text-underline-offset: 3px; word-break: break-all; }
+.pagina-estreita .botao-ajuda { display: inline-block; }

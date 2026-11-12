@@ -1,0 +1,64 @@
+BIO ÓLEO - COMO CONFIGURAR
+==========================
+
+1) BANCO DE DADOS
+   - No MySQL Workbench, importe  banco/biooleo_esg.sql  (banco novo)
+     ou, se já tinha importado antes, rode só os arquivos de atualização que faltam:
+       banco/atualizacao_v09.sql   (pontos e vantagens)
+       banco/atualizacao_v10.sql   (freio contra tentativas de adivinhar senhas)
+       banco/atualizacao_v11.sql   (endereço de coleta do cliente)
+       banco/atualizacao_v12.sql   (central de ajuda: pedidos de ligação)
+       banco/atualizacao_v14.sql   (pedido "Esqueci minha senha" na Central de ajuda)
+   - Recomendado: crie um usuário só do sistema com  banco/usuario_app.sql
+     (o usuário "admin" do Workbench pode tudo; não use ele no site).
+
+2) SEGREDOS (senhas e chaves)
+   Nenhuma senha fica escrita nos arquivos do sistema. Elas ficam em  config/local.php
+   (modelo sem segredos: config/local.exemplo.php) ou em variáveis de ambiente BIOOLEO_<NOME>.
+   - NUNCA envie config/local.php para o Git, para a internet nem dentro de um zip compartilhado.
+   - APP_SECRET: chave dos códigos dos certificados. Gere uma chave longa:
+         php -r "echo bin2hex(random_bytes(32)), PHP_EOL;"
+     Ao trocar, coloque a chave antiga em APP_SECRET_ANTERIOR: os certificados já impressos
+     continuam válidos. Depois de reimprimir tudo, apague a antiga.
+   - Se a chave do Google (GOOGLE_CLIENT_SECRET) já foi enviada a alguém, gere uma nova no
+     Google Cloud (Credenciais) e troque em config/local.php.
+
+3) LOGIN COM GOOGLE (opcional)
+   - Google Cloud > Credenciais > ID do cliente OAuth (aplicativo da Web).
+   - Em "URIs de redirecionamento autorizados" coloque o endereço do google-callback.php,
+     por exemplo  http://localhost/biooleo/google-callback.php
+   - Preencha GOOGLE_CLIENT_ID, GOOGLE_CLIENT_SECRET e GOOGLE_REDIRECT_URI em config/local.php.
+
+4) PUBLICAR NA INTERNET (checklist)
+   [ ] Site em HTTPS (o cookie de sessão e o cabeçalho HSTS só funcionam com HTTPS)
+   [ ] config/local.php com  'DEPURACAO' => false  e  'APP_URL' => 'https://seu-endereco'
+   [ ] Usuário do banco com permissões mínimas (banco/usuario_app.sql), senha forte
+   [ ] APP_SECRET trocado por uma chave longa e aleatória
+   [ ] No php.ini:  display_errors = Off  e  expose_php = Off
+   [ ] Apache com AllowOverride ativo (para o .htaccess funcionar). Em Nginx, bloqueie as
+       pastas config/, includes/ e banco/ e arquivos .sql/.txt no próprio servidor.
+   [ ] APP_URL preenchido (endereço dos certificados)
+   [ ] Apague a pasta prototipo_html/ (são só telas de exemplo)
+
+5) O QUE O SISTEMA JÁ FAZ PARA SE PROTEGER
+   - Senhas guardadas só como hash (bcrypt); consultas ao banco sempre preparadas.
+   - Formulários com token CSRF; sair só por POST.
+   - Limite de tentativas: 5 senhas erradas por conta e 20 por computador em 15 minutos
+     bloqueiam novas tentativas; a validação pública de certificados também tem limite.
+   - Endereço de coleta obrigatório: o cadastro exige CEP, rua, número, bairro, cidade e estado.
+     Clientes antigos ou que entram com o Google são levados ao Perfil para preencher antes de usar o sistema.
+     A equipe vê o endereço (com link para o mapa) em Coletas, Agendamentos e Clientes.
+   - Central de ajuda (ajuda.php, aberta sem login): passo a passo em linguagem simples e um pedido
+     "liguem para mim". A equipe atende em "Pedidos de ajuda" (Administrador e Operação).
+     Para mostrar botões de WhatsApp e telefone, preencha CONTATO_WHATSAPP e CONTATO_TELEFONE em config/local.php.
+   - "Esqueceu sua senha?": o sistema NÃO envia e-mail. O link da tela de entrada leva para a Central de
+     ajuda, com o assunto "Esqueci minha senha" já escolhido. A pessoa informa o telefone e o e-mail do
+     cadastro; o pedido aparece em "Pedidos de ajuda". O Administrador vê a conta e o telefone do cadastro,
+     liga para a pessoa (confirmando que é ela mesma) e define a senha nova em "Trocar senha".
+   - Trocar senha de outra pessoa: só o Administrador. Botão "Trocar senha" em Clientes, em Restrição de
+     acesso e em Pedidos de ajuda. A senha nova segue as mesmas regras do cadastro. Quem estava bloqueado por
+     errar a senha várias vezes volta a poder entrar na hora. A própria senha se troca em Perfil.
+   - Sessão expira após 30 min sem uso ou 8 h no total; ID novo a cada login.
+   - Política de conteúdo (CSP): só roda JavaScript do próprio site.
+   - Erros técnicos só aparecem na tela quando DEPURACAO está ligada E a página é aberta no
+     próprio computador.

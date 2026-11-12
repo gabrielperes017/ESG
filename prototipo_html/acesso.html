@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Restrição de acesso - Bio Óleo</title>
+    <link rel="stylesheet" href="estilo.css" />
+  </head>
+  <body>
+    <aside class="menu-lateral">
+      <h2>Bio Óleo</h2>
+
+      <nav>
+        <a href="dashboard-cliente.html">Início</a>
+        <a href="#">Solicitar coleta</a>
+        <a href="#">Acompanhar coleta</a>
+        <a href="relatorios.html">Relatórios</a>
+        <a href="acesso.html" class="ativo">Restrição de acesso</a>
+        <a href="perfil.html">Perfil</a>
+      </nav>
+    </aside>
+
+    <main class="conteudo">
+      <h1>Restrição de acesso</h1>
+      <p>Defina o que cada funcionário pode fazer no sistema.</p>
+
+      <section class="cartao">
+        <h2>Adicionar funcionário</h2>
+
+        <form>
+          <div class="linha">
+            <div>
+              <label for="nome">Nome</label>
+              <input type="text" id="nome" name="nome" placeholder="Nome do funcionário" />
+            </div>
+            <div>
+              <label for="email">E-mail</label>
+              <input type="email" id="email" name="email" placeholder="funcionario@email.com" />
+            </div>
+            <div>
+              <label for="permissao">Permissão</label>
+              <select id="permissao" name="permissao">
+                <option>Somente visualizar</option>
+                <option>Solicitar coletas</option>
+                <option>Administrador</option>
+              </select>
+            </div>
+          </div>
+
+          <button type="submit">Adicionar</button>
+        </form>
+      </section>
+
+      <section class="cartao">
+        <h2>Funcionários</h2>
+
+        <table>
+          <thead>
+            <tr>
+              <th>Nome</th>
+              <th>E-mail</th>
+              <th>Permissão</th>
+              <th>Acesso ativo</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Maria Souza</td>
+              <td>maria@email.com</td>
+              <td>
+                <select>
+                  <option>Somente visualizar</option>
+                  <option>Solicitar coletas</option>
+                  <option selected>Administrador</option>
+                </select>
+              </td>
+              <td><input type="checkbox" checked /></td>
+            </tr>
+            <tr>
+              <td>João Lima</td>
+              <td>joao@email.com</td>
+              <td>
+                <select>
+                  <option>Somente visualizar</option>
+                  <option selected>Solicitar coletas</option>
+                  <option>Administrador</option>
+                </select>
+              </td>
+              <td><input type="checkbox" checked /></td>
+            </tr>
+            <tr>
+              <td>Ana Costa</td>
+              <td>ana@email.com</td>
+              <td>
+                <select>
+                  <option selected>Somente visualizar</option>
+                  <option>Solicitar coletas</option>
+                  <option>Administrador</option>
+                </select>
+              </td>
+              <td><input type="checkbox" /></td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+    </main>
+  </body>
+</html>

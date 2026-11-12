@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Relatórios - Bio Óleo</title>
+    <link rel="stylesheet" href="estilo.css" />
+  </head>
+  <body>
+    <aside class="menu-lateral">
+      <h2>Bio Óleo</h2>
+
+      <nav>
+        <a href="dashboard-cliente.html">Início</a>
+        <a href="#">Solicitar coleta</a>
+        <a href="#">Acompanhar coleta</a>
+        <a href="relatorios.html" class="ativo">Relatórios</a>
+        <a href="acesso.html">Restrição de acesso</a>
+        <a href="perfil.html">Perfil</a>
+      </nav>
+    </aside>
+
+    <main class="conteudo">
+      <h1>Relatórios</h1>
+      <p>Acompanhe o impacto das suas coletas.</p>
+
+      <section class="cartao">
+        <form class="filtro">
+          <div>
+            <label for="inicio">De</label>
+            <input type="month" id="inicio" name="inicio" />
+          </div>
+          <div>
+            <label for="fim">Até</label>
+            <input type="month" id="fim" name="fim" />
+          </div>
+          <button type="submit">Filtrar</button>
+        </form>
+      </section>
+
+      <section class="resumo">
+        <div class="cartao">
+          <h3>Total de coletas</h3>
+          <p class="numero">24</p>
+        </div>
+        <div class="cartao">
+          <h3>Óleo coletado</h3>
+          <p class="numero">310 L</p>
+        </div>
+        <div class="cartao">
+          <h3>Clientes atendidos</h3>
+          <p class="numero">18</p>
+        </div>
+      </section>
+
+      <section class="cartao">
+        <h2>Quantidade de clientes por mês</h2>
+
+        <div class="grafico">
+          <div class="barra" style="height: 30%">6</div>
+          <div class="barra" style="height: 45%">9</div>
+          <div class="barra" style="height: 40%">8</div>
+          <div class="barra" style="height: 65%">13</div>
+          <div class="barra" style="height: 85%">17</div>
+          <div class="barra" style="height: 100%">20</div>
+        </div>
+        <div class="meses">
+          <span>Mai</span>
+          <span>Jun</span>
+          <span>Jul</span>
+          <span>Ago</span>
+          <span>Set</span>
+          <span>Out</span>
+        </div>
+      </section>
+
+      <section class="cartao">
+        <h2>Detalhamento</h2>
+
+        <table>
+          <thead>
+            <tr>
+              <th>Mês</th>
+              <th>Clientes</th>
+              <th>Óleo coletado</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>Maio</td><td>6</td><td>40 L</td></tr>
+            <tr><td>Junho</td><td>9</td><td>55 L</td></tr>
+            <tr><td>Julho</td><td>8</td><td>48 L</td></tr>
+            <tr><td>Agosto</td><td>13</td><td>70 L</td></tr>
+            <tr><td>Setembro</td><td>17</td><td>95 L</td></tr>
+            <tr><td>Outubro</td><td>20</td><td>110 L</td></tr>
+          </tbody>
+        </table>
+      </section>
+    </main>
+  </body>
+</html>

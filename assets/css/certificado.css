@@ -1,0 +1,76 @@
+:root { --verde: #0B432D; --verde2: #0B683D; --claro: #E5F2EA; --ouro: #D9A21B; --ouro-texto: #8A5F00; --papel: #FBF7EA; --tinta: #26332C; }
+* { box-sizing: border-box; }
+body { margin: 0; background: #E9ECEA; font-family: Georgia, 'Times New Roman', serif; color: #222; }
+.sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); }
+
+.barra-acoes { max-width: 1123px; margin: 20px auto 0; padding: 0 16px; display: flex; justify-content: space-between; align-items: center; }
+.barra-acoes a { color: var(--verde2); font-weight: bold; text-decoration: none; }
+.barra-acoes button, .form-validar button { background: var(--verde2); color: #fff; border: 0; border-radius: 8px; padding: 12px 20px; font-size: 16px; font-weight: bold; cursor: pointer; font-family: inherit; }
+
+.folha-certificado { max-width: 1123px; margin: 16px auto 40px; padding: 0 16px; overflow-x: auto; }
+.escala { container-type: inline-size; width: 100%; min-width: 840px; }
+
+.moldura {
+    --u: calc(min(100vw - 32px, 1123px) / 1123);
+    aspect-ratio: 1123 / 794;
+    background: var(--verde);
+    padding: calc(22 * var(--u));
+    font-family: 'Montserrat', Arial, sans-serif;
+    color: var(--tinta);
+    -webkit-print-color-adjust: exact; print-color-adjust: exact;
+}
+@supports (width: 1cqw) { .moldura { --u: calc(100cqw / 1123); } }
+
+.papel { position: relative; height: 100%; background: var(--papel); padding: calc(18 * var(--u)); }
+.vertice { position: absolute; width: calc(14 * var(--u)); height: calc(14 * var(--u)); background: var(--ouro); transform: rotate(45deg); }
+.v1 { top: calc(10 * var(--u)); left: calc(10 * var(--u)); }
+.v2 { top: calc(10 * var(--u)); right: calc(10 * var(--u)); }
+.v3 { bottom: calc(10 * var(--u)); left: calc(10 * var(--u)); }
+.v4 { bottom: calc(10 * var(--u)); right: calc(10 * var(--u)); }
+
+.filete { height: 100%; border: calc(1.5 * var(--u)) solid var(--ouro); padding: calc(26 * var(--u)) calc(72 * var(--u)) calc(28 * var(--u)); display: flex; flex-direction: column; align-items: center; justify-content: space-between; text-align: center; }
+
+.cabeca { display: flex; flex-direction: column; align-items: center; gap: calc(6 * var(--u)); }
+.cabeca .logo { height: calc(124 * var(--u)); width: auto; display: block; }
+.marca { margin: 0; font-size: calc(18 * var(--u)); font-weight: 600; letter-spacing: .42em; padding-left: .42em; text-transform: uppercase; color: var(--verde); }
+
+.moldura h1 { margin: 0; display: flex; flex-direction: column; align-items: center; gap: calc(4 * var(--u)); font-weight: normal; }
+.moldura h1 .grande { font-family: 'Cormorant Garamond', Georgia, serif; font-weight: 700; font-size: calc(66 * var(--u)); line-height: 1.05; letter-spacing: .12em; padding-left: .12em; text-transform: uppercase; color: var(--verde); }
+.moldura h1 .sub { display: flex; align-items: center; gap: calc(16 * var(--u)); font-family: 'Montserrat', Arial, sans-serif; font-weight: 500; font-size: calc(15 * var(--u)); letter-spacing: .3em; text-transform: uppercase; color: var(--ouro-texto); }
+.moldura h1 .sub::before, .moldura h1 .sub::after { content: ''; width: calc(70 * var(--u)); height: calc(1.5 * var(--u)); background: var(--ouro); }
+
+.corpo { width: 100%; display: flex; flex-direction: column; align-items: center; gap: calc(8 * var(--u)); }
+.corpo .texto { margin: 0; font-size: calc(17 * var(--u)); letter-spacing: .02em; line-height: 1.55; }
+.corpo .detalhe { max-width: calc(820 * var(--u)); font-size: calc(18 * var(--u)); letter-spacing: 0; line-height: 1.6; }
+.corpo .detalhe strong { font-weight: 600; color: var(--verde); }
+.nome { margin: 0 0 calc(8 * var(--u)); max-width: 100%; min-width: calc(520 * var(--u)); padding: 0 calc(40 * var(--u)) calc(6 * var(--u)); border-bottom: calc(1.5 * var(--u)) solid var(--ouro); font-family: 'Cormorant Garamond', Georgia, serif; font-style: italic; font-weight: 600; font-size: calc(50 * var(--u)); line-height: 1.12; color: var(--verde2); overflow-wrap: anywhere; }
+.nome.nome-medio { font-size: calc(40 * var(--u)); }
+.nome.nome-longo { font-size: calc(32 * var(--u)); }
+
+.rodape-cert { width: 100%; display: flex; justify-content: space-between; align-items: flex-end; gap: calc(32 * var(--u)); text-align: left; border-top: calc(1.5 * var(--u)) solid var(--ouro); padding-top: calc(14 * var(--u)); }
+.rodape-cert .rotulo { display: block; font-size: calc(12 * var(--u)); font-weight: 500; letter-spacing: .1em; text-transform: uppercase; color: var(--ouro-texto); }
+.rodape-cert .codigo { display: block; margin-top: calc(2 * var(--u)); font-size: calc(22 * var(--u)); font-weight: bold; font-family: 'Courier New', monospace; color: var(--verde); }
+.rodape-cert .data { display: block; margin-top: calc(2 * var(--u)); font-size: calc(16 * var(--u)); font-weight: 500; }
+.rodape-cert .validar { max-width: calc(400 * var(--u)); }
+.rodape-cert .url { display: block; margin-top: calc(2 * var(--u)); font-size: calc(13 * var(--u)); line-height: 1.35; word-break: break-all; }
+
+.so-tela { display: flex; justify-content: center; padding: 30px 16px; }
+.aviso { background: #fff; border-radius: 12px; padding: 32px; max-width: 520px; width: 100%; text-align: center; box-shadow: 0 2px 10px rgba(0,0,0,.08); }
+.aviso h1 { color: var(--verde); margin: 10px 0; }
+.aviso a { color: var(--verde2); font-weight: bold; }
+.form-validar { display: flex; gap: 10px; margin: 18px 0; }
+.form-validar input { flex: 1; min-width: 0; padding: 12px; font-size: 18px; border: 1.5px solid #bbb; border-radius: 8px; font-family: 'Courier New', monospace; text-transform: uppercase; }
+.resultado { text-align: left; border-radius: 10px; padding: 16px 18px; margin-top: 10px; }
+.resultado.valido { background: var(--claro); border: 1px solid #B7D8C4; color: var(--verde); }
+.resultado.invalido { background: #FDECEA; border: 1px solid #F0B8B2; color: #B42318; }
+.resultado dl { margin: 12px 0 0; display: grid; grid-template-columns: auto 1fr; gap: 6px 14px; }
+.resultado dt { color: #555; } .resultado dd { margin: 0; font-weight: bold; }
+
+@page { size: A4 landscape; margin: 0; }
+@media print {
+    html, body { background: var(--verde); margin: 0; }
+    .barra-acoes { display: none; }
+    .folha-certificado { margin: 0; padding: 0; max-width: none; overflow: visible; }
+    .escala { width: 297mm; min-width: 0; }
+    .moldura { width: 297mm; height: 209.5mm; aspect-ratio: auto; overflow: hidden; break-inside: avoid; page-break-after: avoid; }
+}
